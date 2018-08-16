@@ -46,7 +46,7 @@ const transitionAnimation = index => {
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-export default class PhotoVideo extends React.Component {
+export default class PhotoAnimate extends React.Component {
   constructor(props) {
     super(props);
 
@@ -87,20 +87,9 @@ export default class PhotoVideo extends React.Component {
         pagingEnabled
         style={styles.scrollView}
       >
-       {this.state.photos.map((p, i) => {
-       return (
-         <Image
-           key={i}
-           style={{
-            width: SCREEN_WIDTH,
-            height: SCREEN_HEIGHT,
-            // resizeMode: Image.resizeMode.contain
-           }}
-           index={2}
-           source={{ uri: p.node.image.uri }}
-         />
-       );
-     })}
+        <Screen index={0} />
+        <Screen index={1} />
+        <Screen index={2} />
      </Animated.ScrollView>
         <Button title="I'm done, sign me out" onPress={this._signOutAsync} />
         <StatusBar barStyle="default" />
@@ -116,10 +105,26 @@ export default class PhotoVideo extends React.Component {
 
 
 const Screen = props => {
+
+  const photo=[];
+
   return (
     <View style={styles.scrollPage}>
       <Animated.View style={[styles.screen, transitionAnimation(props.index)]}>
-        <Text style={styles.text}>{props.text}</Text>
+      {photo.map((p, i) => {
+       return (
+         <Screen
+           key={i}
+           style={{
+            width: SCREEN_WIDTH,
+            height: SCREEN_HEIGHT,
+            // resizeMode: Image.resizeMode.contain
+           }}
+
+           source={{ uri: p.node.image.uri }}
+         />
+       );
+     })}
       </Animated.View>
     </View>
   );
