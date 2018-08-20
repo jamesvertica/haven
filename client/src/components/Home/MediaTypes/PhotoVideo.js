@@ -118,10 +118,11 @@ export default class PhotoVideo extends React.Component {
         <ImageOverlay
            overlayAlpha={ 0.25 }
            blurRadius={ 10 }
-           contentPosition={ "top" }
+           contentPosition={ "center" }
            title={ "Your Photo" }
+           titleStyle={{ color: 'white', fontWeight: 'bold' }}
            key={i}
-           height={ SCREEN_HEIGHT }
+           height={ SCREEN_HEIGHT - 70 }
           source={{ uri: p.node.image.uri }}
          />
         </TouchableWithoutFeedback>
