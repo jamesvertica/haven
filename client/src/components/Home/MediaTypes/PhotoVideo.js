@@ -1,6 +1,7 @@
 
 import React from "react";
-import { AsyncStorage, Button, StyleSheet, View, StatusBar, Animated, ScrollView, CameraRoll, Image, Dimensions } from "react-native";
+import { AsyncStorage, Button, StyleSheet, View, StatusBar, Animated, ScrollView, CameraRoll, Image, Dimensions, TouchableHighlight, TouchableWithoutFeedback } from "react-native";
+import ImageOverlay from "react-native-image-overlay";
 // import Gallery from "react-photo-gallery";
 
 const xOffset = new Animated.Value(0);
@@ -51,10 +52,19 @@ export default class PhotoVideo extends React.Component {
     super(props);
 
     this.state = {
-      photos: []
+      photos: [],
+      touched: false
     };
   }
 
+  onTouch = () => {
+    this.setState({ touched: true })
+  }
+
+  offTouch = () => {
+    this.setState({ touched: false })
+  }
+  
   photoGet = () => {
     CameraRoll.getPhotos({
       first: 20,
@@ -81,31 +91,49 @@ export default class PhotoVideo extends React.Component {
            <Animated.ScrollView scrollEventThrottle={16}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: xOffset } } }],
-          { useNativeDriver: true }
+          { useNativeDriver: true } 
         )}
         horizontal
         pagingEnabled
         style={styles.scrollView}
       >
        {this.state.photos.map((p, i) => {
+      if (this.state.touched === false) { 
        return (
-         <Image
+        <TouchableHighlight key={i} onPress={ () => this.onTouch() } >
+        <Image
            key={i}
            style={{
             width: SCREEN_WIDTH,
             height: SCREEN_HEIGHT,
             // resizeMode: Image.resizeMode.contain
            }}
-           index={2}
            source={{ uri: p.node.image.uri }}
          />
+      </TouchableHighlight>
        );
-     })}
+      } else {
+        return (
+        <TouchableWithoutFeedback key={i} onPress={ () => this.offTouch() } >
+        <ImageOverlay
+           overlayAlpha={ 0.25 }
+           blurRadius={ 10 }
+           contentPosition={ "top" }
+           title={ "Your Photo" }
+           key={i}
+           height={ SCREEN_HEIGHT }
+          source={{ uri: p.node.image.uri }}
+         />
+        </TouchableWithoutFeedback>
+       );
+      }
+     })} 
      </Animated.ScrollView>
         <Button title="I'm done, sign me out" onPress={this._signOutAsync} />
         <StatusBar barStyle="default" />
       </View>
     );
+   
   }
 
   _signOutAsync = async () => {
