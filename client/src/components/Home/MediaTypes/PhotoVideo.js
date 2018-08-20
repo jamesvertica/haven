@@ -112,9 +112,9 @@ export default class PhotoVideo extends React.Component {
          />
       </TouchableHighlight>
        );
-      } else {
+      } else if(this.state.touched === true) {
         return (
-        <TouchableWithoutFeedback key={i} onPress={ () => this.offTouch() } >
+        <TouchableHighlight key={i} onPress={ () => this.offTouch() } >
         <ImageOverlay
            overlayAlpha={ 0.25 }
            blurRadius={ 10 }
@@ -125,7 +125,7 @@ export default class PhotoVideo extends React.Component {
            height={ SCREEN_HEIGHT - 70 }
           source={{ uri: p.node.image.uri }}
          />
-        </TouchableWithoutFeedback>
+        </TouchableHighlight>
        );
       }
      })} 
