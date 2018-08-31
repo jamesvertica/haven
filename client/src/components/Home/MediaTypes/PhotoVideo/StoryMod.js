@@ -11,8 +11,8 @@ export default class StoryMod extends React.Component {
     render() {
         return (
     <DialogInput isDialogVisible={true}
-                title={"Add a Note"}
-                message={"Taken in Richmond, VA on August 28th, 2015"}
+                title={"The Story"}
+                message={"Taken in Aqaba, Jordan on March 12th, 2013"}
                 hintInput ={"This was the day that..."}
                 submitInput={ () => { this.props.backToScroll() } }
                 closeDialog={ () => { this.props.storyOff() }}>
