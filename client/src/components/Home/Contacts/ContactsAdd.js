@@ -85,7 +85,7 @@ class ModalScreen extends Component {
   );
 
   renderNavRow = () => (
-    <View style={styles.navRow}>
+    <View style={styles.homeButtonRow}>
       <TouchableOpacity>
         <MaterialCommunityIcons
           name="home-outline"
@@ -128,7 +128,7 @@ class ModalScreen extends Component {
             }}
           >
             <FlatList
-              data={this.state.filteredContacts}
+              data={this.state.query ? this.state.filteredContacts : this.state.contacts}
               renderItem={({ item }) => (
                 <ListItem
                   roundAvatar
@@ -138,7 +138,7 @@ class ModalScreen extends Component {
                   }}
                   title={`${item.name}`}
                   titleStyle={{ color: "white", fontFamily: "Avenir-Medium" }}
-                  subtitle={item.phoneNumbers && item.phoneNumbers[0].digits}
+                  subtitle={item.phoneNumbers && item.phoneNumbers[0].number}
                   subtitleStyle={{
                     color: "#d3d3d3",
                     fontFamily: "Avenir-Medium"
@@ -171,7 +171,9 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    marginTop: 45
+    marginTop: 45,
+    marginBottom: 20 
+
   },
   navRow: {
     height: 40,
@@ -180,7 +182,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     flexDirection: "row",
     paddingLeft: 15,
-    marginTop: 45
+    marginTop: 45,
+    marginBottom: 20 
+
   }
 });
 export default ModalScreen;

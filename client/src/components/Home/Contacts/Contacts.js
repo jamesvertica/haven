@@ -90,14 +90,15 @@ export default class ContactsScreen extends Component {
       <FormLabel labelStyle={{color: 'white'}}>
         Tap a friend to send a message!
       </FormLabel>
-      <View style={styles.row}> 
+      <View> 
         <FormInput
           placeholder='Hello friend!'
           placeholderTextColor='#d3d3d3'
           onChangeText={this.handleMessage}
-          inputStyle={{color:'white', fontFamily:'Avenir-Medium' }}
+          inputStyle={{color:'white', fontFamily:'Avenir-Medium', width: "100%" }}
           autoFocus
           selectionColor='white'
+          multiline
         />
       </View>
       {/* <FormValidationMessage>Error message</FormValidationMessage> */}

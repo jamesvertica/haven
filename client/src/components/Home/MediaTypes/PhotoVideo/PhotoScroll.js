@@ -44,7 +44,7 @@ export default class PhotoScroll extends React.Component {
        {this.state.photos.map((p, i) => {
         if (this.state.options === true) { 
        return (
-        <TouchableHighlight key={ i } onPress={ () => this.offTouch() } >
+        <TouchableHighlight key={ p.story } onPress={ () => this.offTouch() } >
         <ImageOverlay
            overlayAlpha={ 0.30 }
            blurRadius={ 10 }
