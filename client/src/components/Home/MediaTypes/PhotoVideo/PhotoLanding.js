@@ -1,6 +1,6 @@
-const coffee = require('../photoStock/0Wedding1.jpeg');
-const drive = require("../photoStock/1Friends.jpeg");
-const house = require("../photoStock/3Family.jpeg");
+const coffee = require('../photoStock/1stairs.jpg');
+const drive = require("../photoStock/2cat.jpg");
+const house = require("../photoStock/3flowers.jpg");
 const train = require("../photoStock/4Proposal.jpg");
 
 const zero = require("../PhotoGridForHaven/0.jpg");
@@ -26,23 +26,23 @@ const nineteen = require("../PhotoGridForHaven/19.jpg");
 
 export const photoData = [ 
     {
-    "story": "Favorite Coffee Shop from Home :)",
+        "story": "Owen lookin' cute",
+        "location": "Richmond, VA",
+        "image": drive
+        }, 
+    {
+    "story": "On the way up",
     "location": "Austin, TX",
     "image": coffee
     },
     {
-    "story": "Driving with Amelia",
-    "location": "Richmond, VA",
-    "image": drive
-    }, 
-    {
-    "story": "Story 3",
-    "location": "Iceland",
+    "story": "First Floral Workshop",
+    "location": "Austin, TX",
     "image": house
     },
     {
-    "story": "Story 4",
-    "location": "China",
+    "story": "Got engaged!",
+    "location": "Aqaba, Jordan",
     "image": train
     },
 ]
@@ -51,93 +51,98 @@ export const GridData = [
        {
         "story": "Favorite Coffee Shop from Home :)",
         "location": "Austin, TX",
-        "image": one
+        "image": zero
         },
         {
         "story": "Driving with Amelia",
         "location": "Richmond, VA",
-        "image": two
+        "image": one
         }, 
         {
         "story": "Story 3",
         "location": "Iceland",
-        "image": three
+        "image": two
         },
         {
         "story": "Story 4",
         "location": "China",
-        "image": four
+        "image": three
         },
         {
         "story": "Favorite Coffee Shop from Home :)",
         "location": "Austin, TX",
-        "image": five
+        "image": four
         },
         {
         "story": "Driving with Amelia",
         "location": "Richmond, VA",
-        "image": six
+        "image": five
         }, 
         {
         "story": "Story 3",
         "location": "Iceland",
+        "image": six
+        },
+        {
+        "story": "Story 4",
+        "location": "China",
         "image": seven
         },
         {
         "story": "Story 4",
         "location": "China",
         "image": eight
-        },
-        {
-        "story": "Story 4",
-        "location": "China",
-        "image": nine
          },
          {
          "story": "Favorite Coffee Shop from Home :)",
          "location": "Austin, TX",
-         "image": ten
+         "image": nine
          },
          {
          "story": "Driving with Amelia",
          "location": "Richmond, VA",
-         "image": eleven
+         "image": ten
          }, 
          {
          "story": "Story 3",
          "location": "Iceland",
+         "image": eleven
+         },
+         {
+         "story": "Story 4",
+         "location": "China",
          "image": twelve
          },
          {
          "story": "Story 4",
          "location": "China",
          "image": thirteen
-         },
-         {
-         "story": "Story 4",
-         "location": "China",
-         "image": fourteen
           },
           {
           "story": "Driving with Amelia",
           "location": "Richmond, VA",
-          "image": fifteen
+          "image": fourteen
           }, 
           {
           "story": "Story 3",
           "location": "Iceland",
+          "image": fifteen
+          },
+          {
+          "story": "Story 4",
+          "location": "China",
           "image": sixteen
           },
           {
           "story": "Story 4",
           "location": "China",
           "image": seventeen
-          },
-          {
-          "story": "Story 4",
-          "location": "China",
-          "image": eighteen
            },
+           {
+            "story": "Story 4",
+            "location": "China",
+            "image": eighteen
+             },
            {
             "story": "Story 4",
             "location": "China",
