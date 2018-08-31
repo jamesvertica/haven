@@ -116,7 +116,6 @@ export default class AddPhoto extends React.Component {
         
         <View>
           <ImageBackground
-            source={require('../../../../../assets/img/gradient-background-image.png')}
             style={{ width: '100%', height: '100%' }}
           >
       <StoryMod backToScroll={ this.props.scrollView } storyOff={ this.notStoryTime }  />
@@ -132,7 +131,6 @@ export default class AddPhoto extends React.Component {
     } else {
       return (
         <ImageBackground
-        source={require('../../../../../assets/img/gradient-background-image.png')}
         style={{ width: '100%', height: '100%' }}
       >
         <FlatList
