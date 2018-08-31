@@ -52,29 +52,28 @@ class SettingsMain extends Component {
   render() {
     if (this.state.view === 'default') {
       return (
-        <View>
           <ImageBackground source={require('../../../../assets/img/gradient-background-image.png')} style={{ width: '100%', height: '100%' }}>
             <View style={styles.homeButtonRow}>
-            <TouchableOpacity>
-              <MaterialCommunityIcons
-                name="home-outline"
-                size={30}
-                color="#ffffff"
-                onPress={() => this.props.navigation.goBack()}
-              />
-            </TouchableOpacity>
-          </View>
-            <View style={styles.container}>
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                  { backgroundColor: this.state.color }
-                ]}
-                onPress={() => { this.changeView('edit') }}
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  name="home-outline"
+                  size={30}
+                  color="#ffffff"
+                  onPress={() => this.props.navigation.goBack()}
+                />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.container}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    { backgroundColor: this.state.color }
+                  ]}
+                  onPress={() => { this.changeView('edit') }}
                 >
                 <Text style={styles.text}>Update Haven Color</Text>
               </TouchableOpacity>
-            </View>
+              </View>
 
             <View style={{ backgroundColor: 'white'}}>
               <Text style={{ fontWeight: 'bold' }}> Haven color
@@ -88,10 +87,7 @@ class SettingsMain extends Component {
               <Text style={styles.text}>Change Settings</Text>
             </TouchableOpacity>
           </View>
-
-          <SafeAreaView >
             <List>
-
               <SectionList
               renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
               renderSectionHeader={({ section: { title } }) => (
@@ -107,11 +103,9 @@ class SettingsMain extends Component {
               keyExtractor={(item, index) => item + index}
               />
             </List>
-          </SafeAreaView>
           <Button title="Log Out" onPress={this._signOutAsync}/>
           <Button title="Clear cache" onPress={this._clearAsync}/>
-
-        </View>
+        </ImageBackground>
       )
     }
 
@@ -123,19 +117,6 @@ class SettingsMain extends Component {
   }
 }
 
-const styleObject = {
-  button: {
-  alignItems: 'center',
-  marginRight: 40,
-  marginLeft: 40,
-  marginTop: 10,
-  padding: 10,
-  paddingTop: 10,
-  paddingBottom: 10,
-  borderRadius: 10,
-  borderWidth: 1
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
