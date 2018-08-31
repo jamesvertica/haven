@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation';
 
-import { StyleSheet, View, Text, Button, TextInput, FlatList, SafeAreaView, SectionList, TouchableOpacity, AsyncStorage, ImageBackground} from "react-native";
+import { StyleSheet, View, Text, Button, TextInput, FlatList, SafeAreaView, SectionList, TouchableOpacity, AsyncStorage, Alert, ImageBackground } from "react-native";
 // import dummyData from "./dummyData/journalData.js";
 import { List, ListItem } from "react-native-elements";
 import {
@@ -20,7 +20,8 @@ class SettingsMain extends Component {
   }
 
   static navigationOptions = {
-    title: "Settings"
+    title: "Settings",
+    header: null,
   };
 
   //have an edit button
@@ -44,33 +45,36 @@ class SettingsMain extends Component {
     await AsyncStorage.removeItem("userToken");
     this.props.navigation.navigate("Auth");
   };
+  _clearAsync = async () => {
+    await AsyncStorage.clear();
+    Alert.alert("Async Storage cleared")
+  };
 
   render() {
     if (this.state.view === 'default') {
       return (
-        <View>
           <ImageBackground source={require('../../../../assets/img/gradient-background-image.png')} style={{ width: '100%', height: '100%' }}>
             <View style={styles.homeButtonRow}>
-            <TouchableOpacity>
-              <MaterialCommunityIcons
-                name="home-outline"
-                size={30}
-                color="#ffffff"
-                onPress={() => this.props.navigation.goBack()}
-              />
-            </TouchableOpacity>
-          </View>
-            <View style={styles.container}>
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                  { backgroundColor: this.state.color }
-                ]}
-                onPress={() => { this.changeView('edit') }}
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  name="home-outline"
+                  size={30}
+                  color="#ffffff"
+                  onPress={() => this.props.navigation.navigate("Home")}
+                />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.container}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    { backgroundColor: this.state.color }
+                  ]}
+                  onPress={() => { this.changeView('edit') }}
                 >
                 <Text style={styles.text}>Update Haven Color</Text>
               </TouchableOpacity>
-            </View>
+              </View>
 
             <View style={{ backgroundColor: 'white'}}>
               <Text style={{ fontWeight: 'bold' }}> Haven color
@@ -81,42 +85,28 @@ class SettingsMain extends Component {
                   { backgroundColor: this.state.color }
                 ]}
               >
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.container}>
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                ]}
-                onPress={() => { this.changeView('edit') }}
-                >
-                <Text style={styles.text}>Change Settings</Text>
-              </TouchableOpacity>
-            </View>
-
-            <SafeAreaView >
-              <List>
-
-                <SectionList
-                renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
-                renderSectionHeader={({ section: { title } }) => (
-                  <Text style={{ fontWeight: 'bold' }}>{title}</Text>
-                )}
-                sections={[
-                  { title: 'Name', data: ['Bob'] },
-                  { title: 'Media Types', data: ['PhotoVideo', 'Music', 'Journal'] },
-                  { title: 'Interests', data: ['hiking', 'vintage cars', 'bowling'] },
-                  { title: 'Discoverable', data: ['true'] },
-                  { title: 'Journal Entries for Moral Support', data: '5' },
-                ]}
-                keyExtractor={(item, index) => item + index}
-                />
-              </List>
-            </SafeAreaView>
-            <Button title="Log Out" onPress={this._signOutAsync}/>
-          </ImageBackground>
-        </View>
+              <Text style={styles.text}>Change Settings</Text>
+            </TouchableOpacity>
+          </View>
+            <List>
+              <SectionList
+              renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
+              renderSectionHeader={({ section: { title } }) => (
+                <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+              )}
+              sections={[
+                { title: 'Name', data: ['Bob'] },
+                { title: 'Media Types', data: ['PhotoVideo', 'Music', 'Journal'] },
+                { title: 'Interests', data: ['hiking', 'vintage cars', 'bowling'] },
+                { title: 'Discoverable', data: ['true'] },
+                { title: 'Journal Entries for Moral Support', data: '5' },
+              ]}
+              keyExtractor={(item, index) => item + index}
+              />
+            </List>
+          <Button title="Log Out" onPress={this._signOutAsync}/>
+          <Button title="Clear cache" onPress={this._clearAsync}/>
+        </ImageBackground>
       )
     }
 
@@ -128,19 +118,6 @@ class SettingsMain extends Component {
   }
 }
 
-const styleObject = {
-  button: {
-  alignItems: 'center',
-  marginRight: 40,
-  marginLeft: 40,
-  marginTop: 10,
-  padding: 10,
-  paddingTop: 10,
-  paddingBottom: 10,
-  borderRadius: 10,
-  borderWidth: 1
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -186,6 +163,7 @@ export default Settings = createStackNavigator(
     SettingsMain
   },
   {
-    initialRouteName: "SettingsMain"
+    initialRouteName: "SettingsMain",
+    headerMode: 'none'
   }
 );
