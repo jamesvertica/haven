@@ -46,7 +46,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    return <ImageBackground source={require("../../../assets/img/gradient-background-image.png")} style={{ width: "100%", height: "100%" }}>
+    return <ImageBackground source={require("../../../assets/img/gradient2.png")} style={{ width: "100%", height: "100%" }}>
         <View style={styles.container}>
           <View style={styles.iconsContainerTopRow}>
             <TouchableOpacity onPress={this._switchToMusic} accessible={true} accessibilityLabel={"Music Haven"}>

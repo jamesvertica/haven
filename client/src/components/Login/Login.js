@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {AsyncStorage, View, StyleSheet, Text, ImageBackground} from 'react-native';
+import {AsyncStorage, View, StyleSheet, Text, ImageBackground, Dimensions} from 'react-native';
 import Expo from "expo";
 import {SocialIcon, Button} from "react-native-elements";
 
@@ -88,12 +88,15 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <ImageBackground source={require('./assets/splash.png')} style={{ width: '100%', height: '100%' }}>
+      <ImageBackground source={require('../../../assets/img/gradient1.png')} style={{ width: '100%', height: '100%' }}>
+        <View>
+          <Text style={styles.title}>Haven</Text>
+        </View>
         <View style={styles.buttons}>
           <Button title="Google" onPress={this.signInWithGoogle} />
           <Button title="Shortcut login" onPress={this.login} />
           <Button title="AsyncStorage login" onPress={this.loginAsync} />
-          <Button title="Facebook" onPress={this.signInWithFaceBook} />
+          {/* <Button title="Facebook" onPress={this.signInWithFaceBook} /> */}
           <SocialIcon
             title='Sign In With Facebook'
             button onPress={this.signInWithFaceBook}
@@ -105,13 +108,27 @@ export default class LoginScreen extends Component {
   }
 }
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = Dimensions.get("screen")
+
 const styles = StyleSheet.create({
   buttons: {
     flex: 3,
     alignItems: "center",
     justifyContent: "center",
     position: 'absolute',
-    bottom: 0,
-    left: 120
+    bottom: 10,
+    left: 90
   },
+  title: {
+    flex: 1,
+    position: 'absolute',
+    alignItems: "center",
+    justifyContent: "center",
+    top: 190,
+    left: 58,
+    fontFamily: "Futura",
+    fontWeight: "200",
+    fontSize: 90,
+    color: 'white'
+  }
 });

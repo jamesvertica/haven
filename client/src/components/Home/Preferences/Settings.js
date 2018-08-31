@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation';
 
-import { StyleSheet, View, Text, Button, TextInput, FlatList, SafeAreaView, SectionList, TouchableOpacity, AsyncStorage, Alert } from "react-native";
+import { StyleSheet, View, Text, Button, TextInput, FlatList, SafeAreaView, SectionList, TouchableOpacity, AsyncStorage, Alert, ImageBackground } from "react-native";
 // import dummyData from "./dummyData/journalData.js";
 import { List, ListItem } from "react-native-elements";
 import {
@@ -20,7 +20,8 @@ class SettingsMain extends Component {
   }
 
   static navigationOptions = {
-    title: "Settings"
+    title: "Settings",
+    header: null,
   };
 
   //have an edit button
@@ -59,7 +60,7 @@ class SettingsMain extends Component {
                   name="home-outline"
                   size={30}
                   color="#ffffff"
-                  onPress={() => this.props.navigation.goBack()}
+                  onPress={() => this.props.navigation.navigate("Home")}
                 />
                 </TouchableOpacity>
               </View>
@@ -162,6 +163,7 @@ export default Settings = createStackNavigator(
     SettingsMain
   },
   {
-    initialRouteName: "SettingsMain"
+    initialRouteName: "SettingsMain",
+    headerMode: 'none'
   }
 );
