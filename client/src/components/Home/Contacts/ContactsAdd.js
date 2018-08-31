@@ -27,7 +27,10 @@ class ModalScreen extends Component {
       containerStyle={{
         backgroundColor: "transparent",
         borderBottomColor: "transparent",
-        borderTopColor: "transparent"
+        borderTopColor: "transparent",
+        marginTop: 10,
+        marginRight: 15,
+        marginLeft: 15,
       }}
       inputContainerStyle={{ backgroundColor: "white" }}
       inputStyle={{ backgroundColor: "white" }}
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
   navRow: {
     height: 40,
     width: DEVICE_WIDTH - 15,
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     alignItems: "flex-end",
     flexDirection: "row",
     paddingLeft: 15,

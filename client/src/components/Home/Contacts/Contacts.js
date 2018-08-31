@@ -78,7 +78,13 @@ export default class ContactsScreen extends Component {
       placeholder="Search your Haven..." 
       placeholderTextColor='grey'
       round
-      containerStyle={{ backgroundColor: 'transparent', borderBottomColor: 'transparent', borderTopColor: 'transparent'}}
+      containerStyle={{ 
+        backgroundColor: 'transparent', 
+        borderBottomColor: 'transparent', 
+        borderTopColor: 'transparent',
+        marginRight: 15,
+        marginLeft: 15,
+      }}
       inputContainerStyle={{ backgroundColor: 'white' }}
       inputStyle={{ backgroundColor: 'white' }}
       onChangeText={this.handleSearch}
@@ -236,7 +242,8 @@ const styles = StyleSheet.create({
     //flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "flex-end"
+    alignItems: "flex-end",
+    marginTop: 10,
   },
   homeButtonRow: {
     height: 40,
